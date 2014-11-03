@@ -5,7 +5,7 @@ from rere import *
 
 money_regex = Exactly('$') + Digit*2 + (Exactly('.') + Digit*2).zero_or_one
 
-money_regex.match('$23.95') # ==> True
+money_regex.match('$23.95') # ==> Python MatchObject (confirms match)
 ```
 
 Isn't this better than `re.compile('\\$\\d\\d(\\.\\d\\d)?')`?
@@ -67,7 +67,7 @@ regex.prefix_match('bobcat') # ==> False
 
 ```python
 regex = Exactly('$2.00\n')
-regex.match('$2.00\n') # ==> True
+regex.match('$2.00\n') # ==> Returns Python MatchObject (confirms match)
 ````
 
 (If you had to write a raw regex for the above, it might look something
@@ -84,10 +84,10 @@ otherwise, including newlines).
 
 ```python
 regex = Exactly('hello') + AnyChar
-regex.match('hello!') # ==> True
-regex.match('hello1') # ==> True
-regex.match('hello!!') # ==> False
-regex.match('hello\n') # ==> True
+regex.match('hello!') # ==> Returns Python MatchObject
+regex.match('hello1') # ==> Returns Python MatchObject
+regex.match('hello!!') # ==> None
+regex.match('hello\n') # ==> Returns Python MatchObject
 ```
 
 #### `Digit`
